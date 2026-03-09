@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen font-sans">
+
+    <div class="bg-gray-800 w-full max-w-md p-8 rounded-xl shadow-xl">
+        <div class="flex justify-center mb-4">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" class="w-20 h-20">
+        </div>
+
+        <h1 class="text-2xl font-bold text-center text-white">GitHub Issues Tracker</h1>
+        <p class="text-center text-gray-400 mb-6">Sign in to manage your issues</p>
+
+        <label class="text-gray-300 text-sm">Username</label>
+        <input id="userInput" type="text" placeholder="Enter Username" class="w-full mt-2 mb-1 px-3 py-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:border-purple-500">
+        <p class="text-sm text-purple-400 mb-4">Default: admin</p>
+
+        <label class="text-gray-300 text-sm">Password</label>
+        <input id="passInput" type="password" placeholder="Enter Password" class="w-full mt-2 mb-1 px-3 py-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:border-purple-500">
+        <p class="text-sm text-purple-400 mb-6">Default: admin123</p>
+
+        <button id="entryBtn" class="w-full bg-purple-600 hover:bg-purple-700 transition text-white py-2 rounded-md font-semibold">
+            Sign In
+        </button>
+
+        <div class="flex items-center my-6">
+            <hr class="flex-grow border-gray-600">
+            <span class="mx-3 text-gray-400 text-sm">OR</span>
+            <hr class="flex-grow border-gray-600">
+        </div>
+                
+        <div class="bg-gray-700 p-4 rounded-lg text-center text-gray-300">
+            <p class="text-gray-400 mb-2">Demo Credentials:</p>
+            <p><span class="font-semibold">Username:</span> admin</p>
+            <p><span class="font-semibold">Password:</span> admin123</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("entryBtn").addEventListener("click", function() {
+            const userVal = document.getElementById("userInput").value;
+            const passVal = document.getElementById("passInput").value;
+
+            const AUTH_USER = "admin";
+            const AUTH_PASS = "admin123";
+
+            if (userVal === AUTH_USER && passVal === AUTH_PASS) {
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Invalid Username or Password");
+            }
+        });
+    </script>
+</body>
+</html>

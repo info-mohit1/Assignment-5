@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <nav class="bg-gray-800 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <img src="./Images/GitHub-Mark.png" class="w-8">
+            <h1 class="font-semibold text-lg">GitHub Issues Tracker</h1>
+        </div>
+        <div class="flex gap-3">
+            <input id="searchInput" placeholder="Search issues..." class="bg-gray-700 px-3 py-2 rounded text-sm"/>
+            <button id="searchTrigger" class="bg-pink-600 px-4 py-2 rounded text-sm"> Search </button>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6">
+        <div class="bg-gray-800 p-4 rounded-lg flex gap-3 mb-6">
+            <button id="filterAll" class="tabBtn bg-pink-600 px-4 py-1 rounded"> All </button>
+            <button id="filterOpen" class="tabBtn bg-gray-700 px-4 py-1 rounded"> Open </button>
+            <button id="filterClosed" class="tabBtn bg-gray-700 px-4 py-1 rounded"> Closed </button>
+        </div>
+
+        <div class="bg-gray-800 p-4 rounded-lg flex justify-between items-center mb-6">
+            <div>
+                <h2 class="text-lg font-semibold"><span id="issueCount">0</span> Issues </h2>
+                <p class="text-gray-400 text-sm"> Track and manage your project issues </p>
+            </div>
+            <div class="flex gap-4 text-sm">
+                <span class="text-green-400">● Open</span>
+                <span class="text-purple-400">● Closed</span>
+            </div>
+        </div>
+
+        <div id="loading" class="text-center hidden mb-4">
+            <img src="./Images/Aperture.png" class="w-12 mx-auto mb-2">
+            <p class="text-gray-400 text-sm">Loading issues...</p>
+        </div>
+
+        <div id="issuesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </div>
+
+    <div id="modalOverlay" class="fixed inset-0 bg-black/60 hidden items-center justify-center">
+        <div class="bg-[#1f2937] text-white p-6 rounded-xl max-w-2xl w-full shadow-xl">
+            <h2 id="modalTitle" class="text-2xl font-semibold mb-2"></h2>
+            <p id="modalDesc" class="text-gray-400 mb-6"></p>
+            <div class="bg-gray-700/40 rounded-lg p-4 grid grid-cols-2 gap-4 text-sm">
+                <p><span class="text-gray-400">Status:</span> <span id="modalStatus" class="ml-2 font-medium"></span></p>
+                <p><span class="text-gray-400">Author:</span> <span id="modalAuthor" class="ml-2 font-medium"></span></p>
+                <p><span class="text-gray-400">Priority:</span> <span id="modalPriority" class="ml-2 px-3 py-1 rounded-full text-xs"></span></p>
+                <p><span class="text-gray-400">Label:</span> <span id="modalLabel" class="ml-2"></span></p>
+                <p class="col-span-2"><span class="text-gray-400">Date:</span> <span id="modalDate" class="ml-2"></span></p>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="closeModal" class="bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-2 rounded-lg hover:opacity-90 transition">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
